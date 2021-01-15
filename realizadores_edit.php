@@ -9,36 +9,44 @@ if($_SESSION['login']=="correto"&& isset($_SESSION['login'])){
 
 
 
+
+
 if ($_SERVER['REQUEST_METHOD']=="GET") {
-	if (isset($_GET['realizador'])&& is_numeric($_GET['realizador'])) {
-		$idRealizador=$_GET['realizador'];
+	if (isset($_GET['utilizador'])&& is_numeric($_GET['utilizador'])) {
+		$idRealizador=$_GET['utilizador'];
 		$con=new mysqli("localhost","root","","filmes");
 
 		if ($con->connect_errno!=0) {
 				echo "<h1>Ocorreu um erro no acesso a base de dados.<br>".$connect_eror."</h1>";
 				exit();
 		}
-		$sql="Select * from realizadores where id_realizador=?";
+		$sql="Select * from utilizadores where id_######=?";
 		$stm=$con->prepare($sql);
 		if ($stm!=false) {
-				$stm->bind_param("i",$idRealizador);
+				$stm->bind_param("i",$idUtilizador);
 				$stm->execute();
 				$res=$stm->get_result();
-				$realizador=$res->fetch_assoc();
+				$utilizador=$res->fetch_assoc();
 				$stm->close();
 		}
 	
 				  ?>
 	  <!DOCTYPE html>
 	  <html>
-	  <head>
-	  	<title>Editar realizador</title>
-	  </head>
+	 <head>
+	<title></title>
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="fa/css/all.css">
+	<script type="text/javascript" src="fa/js/all.js"></script>
+	 <script src="js/jquery-3.5.1.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
+</head>
 	  <body>
 	  <h1>Editar realizador</h1>
 
 <?php 
-$stm=$con->prepare('select * from realizadores');
+$stm=$con->prepare('select * from utilizadores');
 $stm->execute();
 $res=$stm->get_result();
 while ( $resultado=$res->fetch_assoc() ) {
