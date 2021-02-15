@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD']=="POST") {
 		$utilizador=$_POST['user_name'];
 		$password=$_POST['password'];
 
-		$con=new mysqli ("localhost","root","","filmes");
+		$con=new mysqli ("localhost","root","","bddisciplina");
 		if ($con->connect_errno!=0) {
 			echo "Ocorreu um erro no acesso à base de dados<br>".$con->connect_error;
 			exit;

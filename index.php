@@ -80,7 +80,7 @@ $stm=$con->prepare('select * from modulos');
 $stm->execute();
 $res=$stm->get_result();
 while ( $resultado=$res->fetch_assoc() ) {
-	echo '<a href="moduloss_show.php?modulo='.$resultado['id_modulo'].'">';
+	echo '<a href="modulos_show.php?modulo='.$resultado['id_modulo'].'">';
 	echo $resultado['Nome'];
 	echo "</a>";
 	echo ' <i class="fas fa-arrow-right"></i> <a href="modulos_edit.php?modulo='.$resultado['id_modulo'].'">Editar</a>';
