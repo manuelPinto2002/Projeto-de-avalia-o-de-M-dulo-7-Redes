@@ -28,7 +28,7 @@ if($_SESSION['login']=="correto"&& isset($_SESSION['login'])){
 
 <?php 
 //session_start();
-$con=new mysqli("localhost","root","","filmes");
+$con=new mysqli("localhost","root","","bddisciplina");
 if($con->connect_errno!=0){
 	echo "Ocorreu um erro no acesso à base de dados".$con->connect_error;
 	exit;
@@ -46,7 +46,7 @@ else{
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>filmes</title>
+	<title>dsiciplina</title>
 </head>
 <body>
 
@@ -57,17 +57,17 @@ else{
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-4">
-			<h1>Lista de Filmes <i class="fas fa-film"></i></h1>
+			<h1>Lista de Disciplina <i class="fas fa-film"></i></h1>
 <?php 
-$stm=$con->prepare('select * from filmes');
+$stm=$con->prepare('select * from disciplinas');
 $stm->execute();
 $res=$stm->get_result();
 while ( $resultado=$res->fetch_assoc() ) {
-	echo '<a href="filmes_show.php?filme='.$resultado['id_filme'].'">';
-	echo $resultado['titulo'];
+	echo '<a href="disciplinas_show.php?disciplina='.$resultado['id_diciplina'].'">';
+	echo $resultado['disciplina'];
 	echo "</a>";
-	echo ' <i class="fas fa-arrow-right"></i> <a href="filmes_edit.php?filme='.$resultado['id_filme'].'">Editar</a>';
-	echo ' <i class="fas fa-arrow-right"></i> <a href="filmes_delete.php?filme='.$resultado['id_filme'].'">eliminar</a>';
+	echo ' <i class="fas fa-arrow-right"></i> <a href="disciplinas_edit.php?discip='.$resultado['id_diciplina'].'">Editar</a>';
+	echo ' <i class="fas fa-arrow-right"></i> <a href="disciplinas_delete.php?discip='.$resultado['id_diciplina'].'">eliminar</a>';
 	echo "<br>";
 }
 $stm->close();
@@ -76,39 +76,22 @@ $stm->close();
 		<div class="col-md-4">
 <h1>Autores <i class="fas fa-user-friends"></i></h1>
 <?php 
-$stm=$con->prepare('select * from atores');
+$stm=$con->prepare('select * from modulos');
 $stm->execute();
 $res=$stm->get_result();
 while ( $resultado=$res->fetch_assoc() ) {
-	echo '<a href="atores_show.php?ator='.$resultado['id_Ator'].'">';
+	echo '<a href="moduloss_show.php?modulo='.$resultado['id_modulo'].'">';
 	echo $resultado['Nome'];
 	echo "</a>";
-	echo ' <i class="fas fa-arrow-right"></i> <a href="atores_edit.php?ator='.$resultado['id_Ator'].'">Editar</a>';
-	echo ' <i class="fas fa-arrow-right"></i> <a href="atores_delete.php?filme='.$resultado['id_Ator'].'">eliminar</a>';
+	echo ' <i class="fas fa-arrow-right"></i> <a href="modulos_edit.php?modulo='.$resultado['id_modulo'].'">Editar</a>';
+	echo ' <i class="fas fa-arrow-right"></i> <a href="modulos_delete.php?modulo='.$resultado['id_modulo'].'">eliminar</a>';
 	echo "<br>";
 }
 $stm->close();
  ?>
 		</div>
 
-		<div class="col-md-4">
-<h1>Realizadores <i class="fas fa-user-friends"></i></h1>
-<?php 
-$stm=$con->prepare('select * from realizadores');
-$stm->execute();
-$res=$stm->get_result();
-while ( $resultado=$res->fetch_assoc() ) {
-	echo "<br>";
-	echo '<a href="realizadores_show.php?realizador='.$resultado['id_realizador'].'">';
-	echo $resultado['nome'];
-	echo "</a>";
-	echo ' <i class="fas fa-arrow-right"></i> <a href="realizadores_edit.php?realizador='.$resultado['id_realizador'].'">Editar</a>';
-	echo ' <i class="fas fa-arrow-right"></i> <a href="realizadores_delete.php?realizador='.$resultado['id_realizador'].'">eliminar</a>';
-}
-
-$stm->close();
- ?>
-		</div>
+		
 	</div>
 	<hr>
 	<div class="row" >
@@ -118,8 +101,6 @@ $stm->close();
 <a href="filmes_create.php">Adicionar Filmes</a>
 <br>
 <a href="atores_create.php">Adicionar Atores</a>
-<br>
-<a href="realizadores_create.php">Adicionar Realizadores</a>
 
 		</div>
 	</div>
