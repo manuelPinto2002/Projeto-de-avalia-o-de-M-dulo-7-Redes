@@ -22,23 +22,23 @@ if($_SESSION['login']=="correto"&& isset($_SESSION['login'])){
 <?php 
 
 if ($_SERVER['REQUEST_METHOD']=="GET") {
-	if (!isset($_GET['filme'])|| !is_numeric($_GET['filme'])) {
-		echo "<script>alert('Erro ao abrir livro');</script>";
+	if (!isset($_GET['discip'])|| !is_numeric($_GET['discip'])) {
+		echo "<script>alert('Erro ao abrir disciplina');</script>";
 		echo "Aguarde um momento.A reencaminhar pagina";
 		header("refresh:5;url=index.php");
 	}
-	$idFilme=$_GET['filme'];
-	$con=new mysqli("localhost","root","","filmes");
+	$idFilme=$_GET['discip'];
+	$con=new mysqli("localhost","root","","bddisciplina");
 
 	if ($con->connect_errno!=0) {
 		echo "Ocorreu um erro no acesso à base de dados.<br>".$con->connect_error;
 		exit;
 	}
 	else{
-		$sql='select * from filmes where id_filme= ?';
+		$sql='select * from disciplinas where id_disciplina= ?';
 		$stm=$con->prepare($sql);
 		if ($stm!=false) {
-			$stm->bind_param('i',$idFilme);
+			$stm->bind_param('i',$idDisciplina);
 			$stm->execute();
 			$res=$stm->get_result();
 			$filme=$res->fetch_assoc();
@@ -63,23 +63,16 @@ if ($_SERVER['REQUEST_METHOD']=="GET") {
 	<title>Detalhes</title>
 </head>
 <body>
-<h1>Detalhes do filme</h1>
+<h1>Detalhes do discip</h1>
 <?php 
-if (isset($filme)) {
+if (isset($discip)) {
 	echo "<br>";
-	echo utf8_encode($filme['titulo']);
+	echo utf8_encode($discip['disciplina']);
 	echo "<br>";
-	echo utf8_encode($filme['sinopse']);
-	echo "<br>";
-	echo $filme['idioma'];
-	echo "<br>";
-	echo $filme['data_lancamento'];
-	echo "<br>";
-	echo $filme['quantidade'];
-	echo "<br>";
+	
 }
 else{
- echo "<h2>Parece que o filme selecionado nao existe. <br> confirme a sua seleção</h2>";
+ echo "<h2>Parece que o disciplina selecionado nao existe. <br> confirme a sua seleção</h2>";
 }
 
 ?>

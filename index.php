@@ -63,11 +63,11 @@ $stm=$con->prepare('select * from disciplinas');
 $stm->execute();
 $res=$stm->get_result();
 while ( $resultado=$res->fetch_assoc() ) {
-	echo '<a href="disciplinas_show.php?disciplina='.$resultado['id_diciplina'].'">';
+	echo '<a href="disciplinas_show.php?disciplina='.$resultado['id_disciplina'].'">';
 	echo $resultado['disciplina'];
 	echo "</a>";
-	echo ' <i class="fas fa-arrow-right"></i> <a href="disciplinas_edit.php?discip='.$resultado['id_diciplina'].'">Editar</a>';
-	echo ' <i class="fas fa-arrow-right"></i> <a href="disciplinas_delete.php?discip='.$resultado['id_diciplina'].'">eliminar</a>';
+	echo ' <i class="fas fa-arrow-right"></i> <a href="disciplinas_edit.php?disciplina='.$resultado['id_disciplina'].'">Editar</a>';
+	echo ' <i class="fas fa-arrow-right"></i> <a href="disciplinas_delete.php?disciplina='.$resultado['id_disciplina'].'">eliminar</a>';
 	echo "<br>";
 }
 $stm->close();
@@ -81,7 +81,7 @@ $stm->execute();
 $res=$stm->get_result();
 while ( $resultado=$res->fetch_assoc() ) {
 	echo '<a href="modulos_show.php?modulo='.$resultado['id_modulo'].'">';
-	echo $resultado['Nome'];
+	echo $resultado['numero'];
 	echo "</a>";
 	echo ' <i class="fas fa-arrow-right"></i> <a href="modulos_edit.php?modulo='.$resultado['id_modulo'].'">Editar</a>';
 	echo ' <i class="fas fa-arrow-right"></i> <a href="modulos_delete.php?modulo='.$resultado['id_modulo'].'">eliminar</a>';
