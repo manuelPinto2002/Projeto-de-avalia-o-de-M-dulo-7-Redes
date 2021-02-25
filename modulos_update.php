@@ -1,3 +1,6 @@
+<?php  
+include('boots.php');
+?>
 <?php 
 
 session_start();
@@ -26,11 +29,11 @@ if ($_SERVER['REQUEST_METHOD']=="POST") {
 	}
 	$con=new mysqli("localhost","root","","bddisciplina");
 	if ($con->connect_errno!=0) {
-		echo "Ocorreu um erro no acesso á base de dados.<br>".$con->connect_erro;
+		echo "Ocorreu um erro no acesso á base de dados.<br>".$con->connect_error;
 		exit;
 	}
 	else{
-		$sql='update atores set id_disciplina=?, numero=?, modulo=? where id_modulo=?';
+		$sql='update modulos set id_disciplina=?, numero=?, modulo=? where id_modulo=?';
 		$stm=$con->prepare($sql);
 		if ($stm!=false) {
 			$stm->bind_param('sssi',$id_disciplina,$numero,$modulo,$idModulo);

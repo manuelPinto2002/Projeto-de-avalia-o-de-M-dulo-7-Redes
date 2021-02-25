@@ -1,3 +1,6 @@
+<?php  
+include('boots.php');
+?>
 <?php 
 
 
@@ -23,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD']=="POST") {
     }
     $con=new mysqli("localhost","root","","bddisciplina");
     if ($con->connect_errno!=0) {
-        echo "Ocorreu um erro no acesso á base de dados.<br>".$con->connect_erro;
+        echo "Ocorreu um erro no acesso á base de dados.<br>".$con->connect_error;
         exit;
     }
     else{

@@ -1,11 +1,7 @@
+<?php  
+include('boots.php');
+?>
 <?php 
-session_start();
-if (!isset($_SESSION['login'])) {
-	$_SESSION['login']="incorreto";
-}
-if($_SESSION['login']=="correto"&& isset($_SESSION['login'])){
-	//conteúdo
-
 if ($_SERVER['REQUEST_METHOD']=="POST") {
 	$nome="";
 	$username="";
@@ -40,14 +36,14 @@ if ($_SERVER['REQUEST_METHOD']=="POST") {
 
 	$con=new mysqli("localhost","root","","bddisciplina");
 	if ($con->connect_errno!=0) {
-		echo "Ocorreu um erro no acesso á base de dados.<br>".$con->connect_erro;
+		echo "Ocorreu um erro no acesso á base de dados.<br>".$con->connect_error;
 		exit;
 	}
 	else{
 		$sql='insert into utilizadores (nome,user_name,email,password) values (?,?,?,?)';
 		$stm=$con->prepare($sql);
 		if ($stm!=false) {
-			$stm->bind_param('isss',$nome,$username,$email,$password);
+			$stm->bind_param('ssss',$nome,$username,$email,$password);
 			$stm->execute();
 			$stm->close();
 
@@ -69,11 +65,11 @@ else{
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Adicionar Autores</title>
+	<title>Adicionar utilizadores</title>
 </head>
 <body>
-<h1>Adicionar Autores</h1>
-<form action="modulos_create.php" method="post">
+<h1>Adicionar utilizadores</h1>
+<form action="utilizadores_create.php" method="post">
 	<label>Nome</label><input type="text" name="nome" required><br>
 	<label>User Nome</label><input type="text" name="user_name"><br>
 	<label>Email</label><input type="text" name="email"><br>
@@ -86,9 +82,5 @@ else{
 }
 
 
-}
-else{
-	echo "Para entrar nesta página necessita de efetuar <a href='login.php'>login</a>";
-	header('refresh:2;url=login.php');
-}
+
 ?>

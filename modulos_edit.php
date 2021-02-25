@@ -1,3 +1,6 @@
+<?php  
+include('boots.php');
+?>
 <?php
 
 
@@ -16,13 +19,13 @@ if ($_SERVER['REQUEST_METHOD']=="GET") {
 		$con=new mysqli("localhost","root","","bddisciplina");
 
 		if ($con->connect_errno!=0) {
-				echo "<h1>Ocorreu um erro no acesso a base de dados.<br>".$connect_eror."</h1>";
+				echo "<h1>Ocorreu um erro no acesso a base de dados.<br>".$connect_error."</h1>";
 				exit();
 		}
 		$sql="Select * from modulos where id_modulo=?";
 		$stm=$con->prepare($sql);
 		if ($stm!=false) {
-				$stm->bind_param("i",$idMdoulo);
+				$stm->bind_param("i",$idModulo);
 				$stm->execute();
 				$res=$stm->get_result();
 				$modulo=$res->fetch_assoc();
@@ -33,17 +36,17 @@ if ($_SERVER['REQUEST_METHOD']=="GET") {
 	  <!DOCTYPE html>
 	  <html>
 	  <head>
-	  	<title>Editar Atores</title>
+	  	<title>Editar Modulos</title>
 	  </head>
 	  <body>
-	  <h1>Editar Atores</h1>
+	  <h1>Editar Modulos</h1>
 
 
 <?php 
 $stm=$con->prepare('select * from modulos');
 $stm->execute();
 $res=$stm->get_result();
-while ( $resultado=$res->fetch_assoc() ) {
+while ($resultado=$res->fetch_assoc() ) {
 	
 
 

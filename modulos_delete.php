@@ -1,3 +1,6 @@
+<?php  
+include('boots.php');
+?>
 <?php
 session_start();
 if (!isset($_SESSION['login'])) {
@@ -15,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD']=="GET") {
 		$con=new mysqli("localhost","root","","bddisciplina");
 
 		if ($con->connect_errno!=0) {
-				echo "<h1>Ocorreu um erro no acesso a base de dados.<br>".$connect_eror."</h1>";
+				echo "<h1>Ocorreu um erro no acesso a base de dados.<br>".$connect_error."</h1>";
 				exit();
 		}
 		$sql="delete from modulos where id_modulo=?";

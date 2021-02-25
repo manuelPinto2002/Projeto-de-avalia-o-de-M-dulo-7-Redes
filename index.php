@@ -16,17 +16,16 @@ if($_SESSION['login']=="correto"&& isset($_SESSION['login'])){
 <head>
 	<title></title>
 
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="fa/css/all.css">
-	<script type="text/javascript" src="fa/js/all.js"></script>
-	 <script src="js/jquery-3.5.1.min.js" type="text/javascript"></script>
-<script src="js/bootstrap.min.js" type="text/javascript"></script>
+<?php  
+include('boots.php');
+?>
 </head>
 <body>
 
 
 
 <?php 
+include('nav.php');
 //session_start();
 $con=new mysqli("localhost","root","","bddisciplina");
 if($con->connect_errno!=0){
@@ -57,7 +56,7 @@ else{
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-4">
-			<h1>Lista de Disciplina <i class="fas fa-film"></i></h1>
+			<h1>Lista de Disciplina <i class="fas fa-edit"></i></h1>
 <?php 
 $stm=$con->prepare('select * from disciplinas');
 $stm->execute();
@@ -74,7 +73,7 @@ $stm->close();
  ?>
 		</div>
 		<div class="col-md-4">
-<h1>Modulos <i class="fas fa-user-friends"></i></h1>
+<h1>Modulos <i class="fas fa-book"></i></h1>
 <?php 
 $stm=$con->prepare('select * from modulos');
 $stm->execute();
@@ -102,7 +101,7 @@ $stm->close();
 <br>
 <a href="modulos_create.php">Adicionar Modulo</a>
 <br>
-	<a href="utilizadores_create.php">registar</a>
+	
 		</div>
 	</div>
 </div>
@@ -121,14 +120,6 @@ else{
 
 </body>
 </html>
-
-
-
-
-
-
-
-
 
 
 <?php  

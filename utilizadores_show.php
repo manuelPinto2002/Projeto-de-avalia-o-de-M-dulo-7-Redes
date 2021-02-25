@@ -1,3 +1,6 @@
+<?php  
+include('boots.php');
+?>
 <?php 
 session_start();
 if (!isset($_SESSION['login'])) {
@@ -10,22 +13,16 @@ if($_SESSION['login']=="correto"&& isset($_SESSION['login'])){
 
 <head>
 	<title></title>
-
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="fa/css/all.css">
-	<script type="text/javascript" src="fa/js/all.js"></script>
-	 <script src="js/jquery-3.5.1.min.js" type="text/javascript"></script>
-<script src="js/bootstrap.min.js" type="text/javascript"></script>
 </head>
 <?php 
 
 if ($_SERVER['REQUEST_METHOD']=="GET") {
-	if (!isset($_GET['modulo'])|| !is_numeric($_GET['modulo'])) {
-		echo "<script>alert('Erro ao abrir modulo');</script>";
+	if (!isset($_GET['id_utili'])|| !is_numeric($_GET['id_utili'])) {
+		echo "<script>alert('Erro ao abrir utilizador');</script>";
 		echo "Aguarde um momento.A reencaminhar pagina";
 		header("refresh:5;url=index.php");
 	}
-	$idModulo=$_GET['modulo'];
+	$idUtilizador=$_GET['id_utili'];
 	$con=new mysqli("localhost","root","","bddisciplina");
 
 	if ($con->connect_errno!=0) {
@@ -33,13 +30,13 @@ if ($_SERVER['REQUEST_METHOD']=="GET") {
 		exit;
 	}
 	else{
-		$sql='select * from modulos where id_modulo=?';
+		$sql='select * from utilizadores where id=?';
 		$stm=$con->prepare($sql);
 		if ($stm!=false) {
-			$stm->bind_param('i',$idModulo);
+			$stm->bind_param('i',$idUtilizador);
 			$stm->execute();
 			$res=$stm->get_result();
-			$modulo=$res->fetch_assoc();
+			$id_utili=$res->fetch_assoc();
 			$stm->close();
 
 		}
@@ -63,17 +60,20 @@ if ($_SERVER['REQUEST_METHOD']=="GET") {
 <body>
 <h1>Detalhes do Autor</h1>
 <?php 
-if (isset($modulo)) {
+if (isset($id_utili)) {
 	echo "<br>";
-	echo "ID disciplina ".utf8_encode($modulo['id_disciplina']);
+	echo "Nome".utf8_encode($id_utili['nome']);
 	echo "<br>";
-	echo "Numero ".utf8_encode($modulo['numero']);
+	echo "User Name ".utf8_encode($id_utili['user_name']);
 	echo "<br>";
-	echo "Modulo ".$modulo['modulo'];
+	echo "Email ".$id_utili['email'];
 	echo "<br>";
+	echo "password ".$id_utili['password'];
+	echo "<br>";
+
 }
 else{
- echo "<h2>Parece que o modulo selecionado nao existe. <br> confirme a sua seleção</h2>";
+ echo "<h2>Parece que o utilizador selecionado nao existe. <br> confirme a sua seleção</h2>";
 }
 
 ?>

@@ -1,3 +1,6 @@
+<?php  
+include('boots.php');
+?>
 <?php
 
 
@@ -48,7 +51,7 @@ while ( $resultado=$res->fetch_assoc() ) {
  ?>
 
       <form action="disciplinas_update.php?disciplina=<?php  echo $disciplina['id_disciplina']; ?>" method="post">
-    <label>Disciplina</label><input type="text" name="disciplina" required value="<?php echo $disciplina['discdisciplina'];?>"><br>
+    <label>Disciplina</label><input type="text" name="disciplina" required value="<?php echo $disciplina['disciplina'];?>"><br>
     <input type="submit" name="enviar">
 </form>
       </body>

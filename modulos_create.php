@@ -1,3 +1,6 @@
+<?php  
+include('boots.php');
+?>
 <?php 
 session_start();
 if (!isset($_SESSION['login'])) {
@@ -32,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD']=="POST") {
 		$sql='insert into modulos (id_disciplina,numero,modulo) values (?,?,?)';
 		$stm=$con->prepare($sql);
 		if ($stm!=false) {
-			$stm->bind_param('iss',$id_disciplina,$numero,$modulo);
+			$stm->bind_param('iss',$iddisciplina,$numero,$modulo);
 			$stm->execute();
 			$stm->close();
 
@@ -54,10 +57,10 @@ else{
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Adicionar Autores</title>
+	<title>Adicionar Modulo</title>
 </head>
 <body>
-<h1>Adicionar Autores</h1>
+<h1>Adicionar Modulo</h1>
 <form action="modulos_create.php" method="post">
 	<label>id_disciplina</label><input type="text" name="id_disciplina" required><br>
 	<label>numero</label><input type="text" name="numero"><br>

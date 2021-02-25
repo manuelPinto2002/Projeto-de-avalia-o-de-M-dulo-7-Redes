@@ -1,3 +1,6 @@
+<?php  
+include('boots.php');
+?>
 <?php
 session_start();
 if (!isset($_SESSION['login'])) {
@@ -7,17 +10,13 @@ if($_SESSION['login']=="correto"&& isset($_SESSION['login'])){
 	//conteúdo
 
 
-
-
-
-
 if ($_SERVER['REQUEST_METHOD']=="GET") {
 	if (isset($_GET['discip'])&& is_numeric($_GET['discip'])) {
 		$idDisciplina=$_GET['discip'];
 		$con=new mysqli("localhost","root","","bddisciplina");
 
 		if ($con->connect_errno!=0) {
-				echo "<h1>Ocorreu um erro no acesso a base de dados.<br>".$connect_eror."</h1>";
+				echo "<h1>Ocorreu um erro no acesso a base de dados.<br>".$connect_error."</h1>";
 				exit();
 		}
 		$sql="delete from disciplinas where id_disciplina=?";
@@ -50,10 +49,6 @@ else{
 	echo "<h1>houve um erro ao precessar o seu pedido.<br> Dentro de segundos sera reencaminhado!</h1>";
 	header("refresh:2; url=index.php");
 	}
-
-
-
-
 
 
 }

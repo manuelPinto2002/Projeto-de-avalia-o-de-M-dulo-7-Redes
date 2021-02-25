@@ -1,3 +1,6 @@
+<?php  
+include('boots.php');
+?>
 <?php 
 session_start();
 if (!isset($_SESSION['login'])) {
@@ -61,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD']=="GET") {
 	<title>Detalhes</title>
 </head>
 <body>
-<h1>Detalhes do Autor</h1>
+<h1>Detalhes do Modulo</h1>
 <?php 
 if (isset($modulo)) {
 	echo "<br>";

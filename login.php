@@ -6,6 +6,9 @@
 </head>
 <body>
 <h1>Login</h1>
+<?php  
+include('boots.php');
+?>
 <form method="post" action="processa_login.php">
 	<label>Nome utilizador</label><input type="text" name="user_name"  required><br>
 	<label>Palavra-passe</label><input type="password" name="password"required><br>
