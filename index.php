@@ -63,18 +63,18 @@ $stm=$con->prepare('select * from disciplinas');
 $stm->execute();
 $res=$stm->get_result();
 while ( $resultado=$res->fetch_assoc() ) {
-	echo '<a href="disciplinas_show.php?disciplina='.$resultado['id_disciplina'].'">';
+	echo '<a href="disciplinas_show.php?discip='.$resultado['id_disciplina'].'">';
 	echo $resultado['disciplina'];
 	echo "</a>";
 	echo ' <i class="fas fa-arrow-right"></i> <a href="disciplinas_edit.php?disciplina='.$resultado['id_disciplina'].'">Editar</a>';
-	echo ' <i class="fas fa-arrow-right"></i> <a href="disciplinas_delete.php?disciplina='.$resultado['id_disciplina'].'">eliminar</a>';
+	echo ' <i class="fas fa-arrow-right"></i> <a href="disciplinas_delete.php?discip='.$resultado['id_disciplina'].'">eliminar</a>';
 	echo "<br>";
 }
 $stm->close();
  ?>
 		</div>
 		<div class="col-md-4">
-<h1>Autores <i class="fas fa-user-friends"></i></h1>
+<h1>Modulos <i class="fas fa-user-friends"></i></h1>
 <?php 
 $stm=$con->prepare('select * from modulos');
 $stm->execute();
@@ -98,10 +98,11 @@ $stm->close();
 		<div class="col-md-4 offset-sm-4">
 <h1>Links <i class="fas fa-link"></i></h1>
 <br>
-<a href="filmes_create.php">Adicionar Filmes</a>
+<a href="disciplinas_create.php">Adicionar disciplinas</a>
 <br>
-<a href="atores_create.php">Adicionar Atores</a>
-
+<a href="modulos_create.php">Adicionar Modulo</a>
+<br>
+	<a href="utilizadores_create.php">registar</a>
 		</div>
 	</div>
 </div>

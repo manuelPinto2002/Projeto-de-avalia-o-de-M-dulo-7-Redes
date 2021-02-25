@@ -11,21 +11,21 @@ if($_SESSION['login']=="correto"&& isset($_SESSION['login'])){
 
 
 if ($_SERVER['REQUEST_METHOD']=="GET") {
-	if (isset($_GET['ator'])&& is_numeric($_GET['ator'])) {
-		$idAtor=$_GET['ator'];
-		$con=new mysqli("localhost","root","","filmes");
+	if (isset($_GET['modulo'])&& is_numeric($_GET['modulo'])) {
+		$idModulo=$_GET['modulo'];
+		$con=new mysqli("localhost","root","","bddisciplina");
 
 		if ($con->connect_errno!=0) {
 				echo "<h1>Ocorreu um erro no acesso a base de dados.<br>".$connect_eror."</h1>";
 				exit();
 		}
-		$sql="Select * from atores where id_Ator=?";
+		$sql="Select * from modulos where id_modulo=?";
 		$stm=$con->prepare($sql);
 		if ($stm!=false) {
-				$stm->bind_param("i",$idAtor);
+				$stm->bind_param("i",$idMdoulo);
 				$stm->execute();
 				$res=$stm->get_result();
-				$ator=$res->fetch_assoc();
+				$modulo=$res->fetch_assoc();
 				$stm->close();
 		}
 	
@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD']=="GET") {
 
 
 <?php 
-$stm=$con->prepare('select * from atores');
+$stm=$con->prepare('select * from modulos');
 $stm->execute();
 $res=$stm->get_result();
 while ( $resultado=$res->fetch_assoc() ) {
@@ -53,10 +53,10 @@ while ( $resultado=$res->fetch_assoc() ) {
 
 
 
-	  <form action="atores_update.php?ator=<?php  echo $ator['id_Ator']; ?>" method="post">
-	<label>Nome</label><input type="text" name="Nome" required value="<?php echo $ator['Nome'];?>"><br>
-	<label>Nacionalidade</label><input type="text" name="Nacionalidade" value="<?php echo $ator['Nacionalidade'];?>"><br>
-	<label>Data Nascimento</label><input type="date" name="Data_Nascimento" value="<?php echo $ator['Data_Nascimento'];?>"><br>
+	  <form action="modulos_update.php?modulo=<?php  echo $modulo['id_modulo']; ?>" method="post">
+	<label>id disciplina</label><input type="text" name="id_disciplina" required value="<?php echo $modulo['id_disciplina'];?>"><br>
+	<label>numero</label><input type="text" name="numero" value="<?php echo $modulo['numero'];?>"><br>
+	<label>Modulo</label><input type="text" name="modulo" value="<?php echo $modulo['modulo'];?>"><br>
 	<input type="submit" name="enviar">
 </form>
 

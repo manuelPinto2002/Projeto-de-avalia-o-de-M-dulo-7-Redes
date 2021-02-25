@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD']=="GET") {
 		echo "Aguarde um momento.A reencaminhar pagina";
 		header("refresh:5;url=index.php");
 	}
-	$idFilme=$_GET['discip'];
+	$idDisciplina=$_GET['discip'];
 	$con=new mysqli("localhost","root","","bddisciplina");
 
 	if ($con->connect_errno!=0) {
@@ -35,13 +35,13 @@ if ($_SERVER['REQUEST_METHOD']=="GET") {
 		exit;
 	}
 	else{
-		$sql='select * from disciplinas where id_disciplina= ?';
+		$sql='select * from disciplinas where id_disciplina=?';
 		$stm=$con->prepare($sql);
 		if ($stm!=false) {
 			$stm->bind_param('i',$idDisciplina);
 			$stm->execute();
 			$res=$stm->get_result();
-			$filme=$res->fetch_assoc();
+			$discip=$res->fetch_assoc();
 			$stm->close();
 
 		}

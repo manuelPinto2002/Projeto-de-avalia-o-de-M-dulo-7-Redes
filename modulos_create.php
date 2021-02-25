@@ -6,41 +6,37 @@ if (!isset($_SESSION['login'])) {
 if($_SESSION['login']=="correto"&& isset($_SESSION['login'])){
 	//conteúdo
 
-
-
-
 if ($_SERVER['REQUEST_METHOD']=="POST") {
-	$nome="";
-	$nacionalidade="";
-	$data_nascimento="";
+	$iddisciplina="";
+	$numero="";
+	$modulo="";
 
-
-	if (isset($_POST['Nome'])) {
-		$nome=$_POST['Nome'];
+	if (isset($_POST['id_disciplina'])) {
+		$iddisciplina=$_POST['id_disciplina'];
 	}
 	else{
-		echo "<script>alert('É obrigatorio o preenchimento do Nome.');</script>";
+		echo "<script>alert('É obrigatorio o preenchimento do id.');</script>";
 	}
-	if (isset($_POST['Nacionalidade'])) {
-		$nacionalidade=$_POST['Nacionalidade'];
+	if (isset($_POST['numero'])) {
+		$numero=$_POST['numero'];
 	}
-	if (isset($_POST['Data_Nascimento'])) {
-		$data_nascimento=$_POST['Data_Nascimento'];
+	if (isset($_POST['modulo'])) {
+		$modulo=$_POST['modulo'];
 	}
-	$con=new mysqli("localhost","root","","filmes");
+	$con=new mysqli("localhost","root","","bddisciplina");
 	if ($con->connect_errno!=0) {
 		echo "Ocorreu um erro no acesso á base de dados.<br>".$con->connect_erro;
 		exit;
 	}
 	else{
-		$sql='insert into atores (Nome, Nacionalidade,Data_Nascimento ) values (?,?,?)';
+		$sql='insert into modulos (id_disciplina,numero,modulo) values (?,?,?)';
 		$stm=$con->prepare($sql);
 		if ($stm!=false) {
-			$stm->bind_param('sss',$nome,$nacionalidade,$data_nascimento);
+			$stm->bind_param('iss',$id_disciplina,$numero,$modulo);
 			$stm->execute();
 			$stm->close();
 
-			echo "<script>alert('Ator adicionado com sucesso')</script>";
+			echo "<script>alert('modulo adicionado com sucesso')</script>";
 
 			echo "Aguarde um momento. A reencaminhar pagina";
 
@@ -62,10 +58,10 @@ else{
 </head>
 <body>
 <h1>Adicionar Autores</h1>
-<form action="atores_create.php" method="post">
-	<label>Nome</label><input type="text" name="Nome" required><br>
-	<label>Nacionalidade</label><input type="text" name="Nacionalidade"><br>
-	<label>Data Nascimento</label><input type="date" name="Data_Nascimento"><br>
+<form action="modulos_create.php" method="post">
+	<label>id_disciplina</label><input type="text" name="id_disciplina" required><br>
+	<label>numero</label><input type="text" name="numero"><br>
+	<label>modulo</label><input type="text" name="modulo"><br>
 	<input type="submit" name="enviar">
 </form>
 </body>

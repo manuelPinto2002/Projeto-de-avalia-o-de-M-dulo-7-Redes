@@ -10,6 +10,8 @@
 	<label>Nome utilizador</label><input type="text" name="user_name"  required><br>
 	<label>Palavra-passe</label><input type="password" name="password"required><br>
 	<input type="submit" name="login">
+	<br>
+	<a href="utilizadores_create.php">registar</a>
 </form>
 </body>
 </html>

@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 if (!isset($_SESSION['login'])) {
 	$_SESSION['login']="incorreto";
@@ -13,21 +12,21 @@ if($_SESSION['login']=="correto"&& isset($_SESSION['login'])){
 
 
 if ($_SERVER['REQUEST_METHOD']=="GET") {
-	if (isset($_GET['filme'])&& is_numeric($_GET['filme'])) {
-		$idFilme=$_GET['filme'];
-		$con=new mysqli("localhost","root","","filmes");
+	if (isset($_GET['discip'])&& is_numeric($_GET['discip'])) {
+		$idDisciplina=$_GET['discip'];
+		$con=new mysqli("localhost","root","","bddisciplina");
 
 		if ($con->connect_errno!=0) {
 				echo "<h1>Ocorreu um erro no acesso a base de dados.<br>".$connect_eror."</h1>";
 				exit();
 		}
-		$sql="delete from filmes where id_filme=?";
+		$sql="delete from disciplinas where id_disciplina=?";
 		$stm=$con->prepare($sql);
 		if ($stm!=false) {
-				$stm->bind_param("i",$idFilme);
+				$stm->bind_param("i",$idDisciplina);
 				$stm->execute();
 				$stm->close();
-				echo "<script>alert('Livro eliminado com sucesso');</script>";
+				echo "<script>alert('disciplina eliminado com sucesso');</script>";
 				echo "Aguarde um momento.A reencaminhar página";
 					header("refresh:2; url=index.php");
 		}

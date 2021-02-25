@@ -20,26 +20,26 @@ if($_SESSION['login']=="correto"&& isset($_SESSION['login'])){
 <?php 
 
 if ($_SERVER['REQUEST_METHOD']=="GET") {
-	if (!isset($_GET['ator'])|| !is_numeric($_GET['ator'])) {
-		echo "<script>alert('Erro ao abrir Autor');</script>";
+	if (!isset($_GET['modulo'])|| !is_numeric($_GET['modulo'])) {
+		echo "<script>alert('Erro ao abrir modulo');</script>";
 		echo "Aguarde um momento.A reencaminhar pagina";
 		header("refresh:5;url=index.php");
 	}
-	$idAtor=$_GET['ator'];
-	$con=new mysqli("localhost","root","","filmes");
+	$idModulo=$_GET['modulo'];
+	$con=new mysqli("localhost","root","","bddisciplina");
 
 	if ($con->connect_errno!=0) {
 		echo "Ocorreu um erro no acesso à base de dados.<br>".$con->connect_error;
 		exit;
 	}
 	else{
-		$sql='select * from atores where id_Ator=?';
+		$sql='select * from modulos where id_modulo=?';
 		$stm=$con->prepare($sql);
 		if ($stm!=false) {
-			$stm->bind_param('i',$idAtor);
+			$stm->bind_param('i',$idModulo);
 			$stm->execute();
 			$res=$stm->get_result();
-			$ator=$res->fetch_assoc();
+			$modulo=$res->fetch_assoc();
 			$stm->close();
 
 		}
@@ -63,17 +63,17 @@ if ($_SERVER['REQUEST_METHOD']=="GET") {
 <body>
 <h1>Detalhes do Autor</h1>
 <?php 
-if (isset($ator)) {
+if (isset($modulo)) {
 	echo "<br>";
-	echo utf8_encode($ator['Nome']);
+	echo "ID disciplina ".utf8_encode($modulo['id_disciplina']);
 	echo "<br>";
-	echo utf8_encode($ator['Nacionalidade']);
+	echo "Numero ".utf8_encode($modulo['numero']);
 	echo "<br>";
-	echo $ator['Data_Nascimento'];
+	echo "Modulo ".$modulo['modulo'];
 	echo "<br>";
 }
 else{
- echo "<h2>Parece que o Autor selecionado nao existe. <br> confirme a sua seleção</h2>";
+ echo "<h2>Parece que o modulo selecionado nao existe. <br> confirme a sua seleção</h2>";
 }
 
 ?>
