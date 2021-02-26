@@ -63,12 +63,14 @@ while ( $resultado=$res->fetch_assoc() ) {
 	echo '<a href="utilizadores_show.php?id_utili='.$resultado['id'].'">';
 	echo $resultado['nome'];
 	echo "</a>";
-	echo ' <i class="fas fa-arrow-right"></i> <a href="utilizadores_delete.php?id_utili='.$resultado['id'].'">eliminar</a>';
+	echo ' <i class="fas fa-arrow-right"></i> <a href="utilizadores_delete.php?id_utili='.$resultado['id'].'"><button style="background: #069cc2; border-radius: 6px; padding: 6px; cursor: pointer; color: #fff; border: none; font-size: 16px;">eliminar</button></a>';
 	echo "<br>";
 }
 $stm->close();
  ?>
- <a href="utilizadores_create.php">registar</a>
+ <br>
+ <br>
+ <a href="utilizadores_create.php"><button>Registar</button></a>
 
 		</div>
 
