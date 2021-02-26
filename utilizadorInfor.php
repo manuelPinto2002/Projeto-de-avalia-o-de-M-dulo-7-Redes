@@ -21,7 +21,9 @@ include('boots.php');
 ?>
 </head>
 <body>
-
+	<?
+	include('nav.php');
+?>
 
 
 <?php 
