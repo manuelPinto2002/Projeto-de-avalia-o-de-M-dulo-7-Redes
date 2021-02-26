@@ -92,10 +92,9 @@ $stm->close();
 		</div>
 
 		
-	</div>
-	<hr>
-	<div class="row" >
-		<div class="col-md-6 offset-sm-5">
+		<hr>
+	
+		<div class="col-md-4">
 <h1>Links <i class="fas fa-link"></i></h1>
 <br>
 <a href="disciplinas_create.php"><button> Adicionar disciplinas</button></a>
@@ -105,6 +104,7 @@ $stm->close();
 <a href="login.php"><button>log out</button></a>
 	
 		</div>
+	
 	</div>
 </div>
 
