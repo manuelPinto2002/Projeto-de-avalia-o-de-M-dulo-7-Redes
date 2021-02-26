@@ -76,6 +76,7 @@ else{
 	<label>Palavra Passe</label><input type="password" name="password"><br>
 	<input type="submit" name="enviar">
 </form>
+<a href="index.php">Menu</a>
 </body>
 </html>
 <?php  

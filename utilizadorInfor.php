@@ -71,6 +71,7 @@ $stm->close();
  <br>
  <br>
  <a href="utilizadores_create.php"><button>Registar</button></a>
+ <a href="index.php">Menu</a>
 
 		</div>
 

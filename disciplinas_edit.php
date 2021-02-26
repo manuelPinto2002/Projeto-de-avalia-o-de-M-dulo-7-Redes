@@ -54,6 +54,7 @@ while ( $resultado=$res->fetch_assoc() ) {
     <label>Disciplina</label><input type="text" name="disciplina" required value="<?php echo $disciplina['disciplina'];?>"><br>
     <input type="submit" name="enviar">
 </form>
+<a href="index.php">Menu</a>
       </body>
       </html>
       <?php

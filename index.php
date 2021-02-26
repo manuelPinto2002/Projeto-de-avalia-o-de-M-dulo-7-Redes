@@ -102,7 +102,7 @@ $stm->close();
 <br>
 <a href="modulos_create.php"><button>Adicionar Modulo</button></a>
 <br>
-<a href="login.php"><button>login</button></a>
+<a href="login.php"><button>log out</button></a>
 	
 		</div>
 	</div>

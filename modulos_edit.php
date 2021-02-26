@@ -63,7 +63,7 @@ while ($resultado=$res->fetch_assoc() ) {
 	<input type="submit" name="enviar">
 </form>
 
-
+<a href="index.php">Menu</a>
 	  </body>
 	  </html>
 	  <?php

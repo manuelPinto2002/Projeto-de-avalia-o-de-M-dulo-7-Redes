@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD']=="GET") {
 	<title>Detalhes</title>
 </head>
 <body>
-<h1>Detalhes do discip</h1>
+<h1>Detalhes do disciplina</h1>
 <?php 
 if (isset($discip)) {
 	echo "<br>";
@@ -75,7 +75,7 @@ else{
 }
 
 ?>
-
+<a href="index.php">Menu</a>
 </body>
 </html>
 

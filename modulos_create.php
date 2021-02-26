@@ -67,6 +67,7 @@ else{
 	<label>modulo</label><input type="text" name="modulo"><br>
 	<input type="submit" name="enviar">
 </form>
+<a href="index.php">Menu</a>
 </body>
 </html>
 <?php  

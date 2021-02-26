@@ -77,6 +77,7 @@ else{
 }
 
 ?>
+<a href="index.php">Menu</a>
 </body>
 </html>
 <?php
