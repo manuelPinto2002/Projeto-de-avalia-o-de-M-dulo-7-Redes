@@ -24,6 +24,7 @@ include('boots.php');
 
 
 
+
 <?php 
 include('nav.php');
 //session_start();
@@ -91,7 +92,12 @@ $stm->close();
  ?>
 		</div>
 
-		
+
+
+
+
+
+
 		<hr>
 	
 		<div class="col-md-4">
